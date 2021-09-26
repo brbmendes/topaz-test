@@ -5,5 +5,5 @@ class Accounting:
     def add_server(self, server):
         self.usage.append(server)
 
-    def get_usage(self):
+    def calculate_usage(self):
         return self.usage
