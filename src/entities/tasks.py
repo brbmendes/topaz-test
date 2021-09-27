@@ -3,6 +3,11 @@ import uuid
 
 class Task:
     def __init__(self, ticks):
+        """Creates the task.
+
+        Keyword arguments:
+        ticks -- basic unit of time for the simulation
+        """
         self.__id = uuid.uuid4()
         self.__ticks = ticks
 
