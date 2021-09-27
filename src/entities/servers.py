@@ -1,5 +1,11 @@
 class Server:
     def __init__(self, id, umax):
+        """Creates the Server.
+
+        Keyword arguments:
+        id -- the server id
+        umax -- max number of simultaneous users connected to the server and running jobs
+        """
         self.__id = id
         self.__umax = umax
         self.__running_jobs = []
