@@ -1,11 +1,11 @@
 import sys
 from math import ceil
 
-from src.entities.accountings import Accounting
-from src.entities.jobs import Job
-from src.entities.servers import Server
-from src.entities.tasks import Task
-from src.entities.users import User
+from entities.accountings import Accounting
+from entities.jobs import Job
+from entities.servers import Server
+from entities.tasks import Task
+from entities.users import User
 
 
 def has_input_file(args):
@@ -40,11 +40,11 @@ def update_output(current_output, list_of_active_servers):
     return current_output
 
 def write_output(final_output, final_cost):
-    with open("..\output.txt", 'w') as out_file:
+    with open("../output.txt", 'w') as out_file:
         for output_line in final_output:
             out_file.write(f"{output_line}\n")
         out_file.write(str(final_cost))
-    print("\nO arquivo de saída output.txt foi gerado no caminho \"../output.txt\"\n")
+    print("\nO arquivo de saída output.txt foi gerado no caminho \"./output.txt\"\n")
 
 if __name__ == '__main__':
     # Testa se foi informado um arquivo de entrada
