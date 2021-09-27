@@ -3,11 +3,11 @@ import uuid
 
 class UsedServer:
     def __init__(self, uptime):
-        self.id = uuid.uuid4()
-        self.uptime = uptime
+        self.__id = uuid.uuid4()
+        self.__uptime = uptime
 
     def get_id(self):
-        return self.id
+        return self.__id
 
     def get_uptime(self):
-        return self.uptime
+        return self.__uptime
