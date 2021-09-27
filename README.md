@@ -269,4 +269,4 @@ Distribuído sobre a licença MIT. Consulte o arquivo LICENSE para maiores infor
 [license-shield]: https://img.shields.io/github/license/brbmendes/topaz-test?style=for-the-badge
 [license-url]: https://github.com/brbmendes/topaz-test/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/brbmendes
+[linkedin-url]: https://www.linkedin.com/in/brbmendes/
