@@ -3,7 +3,7 @@ class Server:
         self.id = id
         self.umax = umax
         self.running_jobs = []
-        self.uptime = 0
+        self.uptime = 1
         self.can_add_job = True
 
     def get_id(self):
@@ -14,9 +14,11 @@ class Server:
         if len(self.running_jobs) >= self.umax:
             self.can_add_job = False
 
-    def __remove_job(self, job_id):
-        job_index = self.running_jobs.index(job_id)
-        return self.running_jobs.pop(job_index)
+    def __remove_job(self, job):
+        job_index = self.running_jobs.index(job)
+        self.running_jobs.pop(job_index)
+        if len(self.running_jobs) < self.umax:
+            self.can_add_job = True
 
     def get_running_jobs(self):
         return self.running_jobs
@@ -28,8 +30,11 @@ class Server:
         self.uptime += 1
 
     def update_tasks_remove_finished(self):
+        jobs_to_be_removed = []
         for job in self.running_jobs:
+            job.task.ticks -= 1
             if job.task.ticks <= 0:
-                self.__remove_job(job.id)
-            else:
-                job.task.ticks -= 1
+                jobs_to_be_removed.append(job)
+
+        for job in jobs_to_be_removed:
+            self.__remove_job(job)
