@@ -1,4 +1,5 @@
 import sys
+from math import ceil
 
 from src.entities.accountings import Accounting
 from src.entities.jobs import Job
@@ -22,6 +23,28 @@ def open_file(input_file_text):
         print("Falha ao abrir o arquivo informado.")
         sys.exit()
 
+def update_output(current_output, list_of_active_servers):
+    has_started = False
+    usage = ""
+    if len(list_of_active_servers) <= 0:
+        usage = "0"
+    else:
+        for active_server in list_of_active_servers:
+            if not has_started:
+                usage = str(len(active_server.running_jobs))
+                has_started = True
+            else:
+                usage += "," + str(len(active_server.running_jobs))
+
+    current_output.append(usage)
+    return current_output
+
+def write_output(final_output, final_cost):
+    with open("..\output.txt", 'w') as out_file:
+        for output_line in final_output:
+            out_file.write(f"{output_line}\n")
+        out_file.write(str(final_cost))
+    print("\nO arquivo de saída output.txt foi gerado no caminho \"../output.txt\"\n")
 
 if __name__ == '__main__':
     # Testa se foi informado um arquivo de entrada
@@ -50,56 +73,55 @@ if __name__ == '__main__':
 
     active_servers = []
     inactive_servers = []
-    temporary_switch_servers = []
+    temporary_active_servers = []
     accounting = Accounting()
 
+    output = []
     # loop principal do programa
     while len(active_servers) > 0 or len(new_users_per_tick) > 0:
+        current_capacity = 0
         for server in active_servers:
-            # atualiza uptime
-            server.update_uptime()
-
             # Finaliza os jobs correntes e atualiza as tasks
             server.update_tasks_remove_finished()
 
-            # finaliza servers e manda pro acounting
+        for server in active_servers:
             if len(server.running_jobs) > 0:
-                temporary_switch_servers.append(server)
+                # calcula capacidade de trabalho das VMs restantes
+                temporary_active_servers.append(server)
+                current_capacity += UMAX - len(server.running_jobs)
+                # atualiza uptime
+                server.update_uptime()
             else:
+                # desliga VM, manda pro acounting
                 inactive_servers.append(server)
                 accounting.add_server(server)
 
-        active_servers = [] + temporary_switch_servers
-        temporary_switch_servers = []
+        active_servers = [] + temporary_active_servers
+        temporary_active_servers = []
 
         # distribui a carga de trabalho
-        new_users = new_users_per_tick.pop(0)
+        if len(new_users_per_tick) > 0:
+            new_users = new_users_per_tick.pop(0)
+        else:
+            new_users = 0
 
-        for user in range(new_users):
-            if len(active_servers) <= 0:
+        if new_users > current_capacity:
+            new_vms = ceil((new_users - current_capacity) / UMAX)
+            for vm in range(new_vms):
                 new_server = Server(next_server_id, UMAX)
                 next_server_id += 1
-                job = Job(User(), Task(TTASK))
-                new_server.add_job(job)
                 active_servers.append(new_server)
-            else:
-                for server in active_servers:
-                    if server.can_add_job:
-                        job = Job(User(), Task(TTASK))
-                        server.add_job(job)
-                        break
-                    else:
-                        new_server = Server(next_server_id, UMAX)
-                        next_server_id += 1
-                        job = Job(User(), Task(TTASK))
-                        new_server.add_job(job)
-                        active_servers.append(new_server)
-                        break
+
+        for user in range(new_users):
+            for server in active_servers:
+                if server.can_add_job:
+                    job = Job(User(), Task(TTASK))
+                    server.add_job(job)
+                    break
+
+        output = update_output(output, active_servers)
 
 
-
-    # Quando chega aqui, deve ter acabado tudo
-    # falta calcular o accounting
-
-
-    print('fim do programa')
+    cost = accounting.calculate_cost_usage()
+    write_output(output,cost)
+    print('Fim do programa.')
