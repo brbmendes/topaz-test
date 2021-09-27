@@ -267,6 +267,6 @@ Distribuído sobre a licença MIT. Consulte o arquivo LICENSE para maiores infor
 [contributors-shield]: https://img.shields.io/github/contributors/brbmendes/topaz-test?style=for-the-badge
 [contributors-url]: https://github.com/brbmendes/topaz-test/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/brbmendes/topaz-test?style=for-the-badge
-[license-url]: https://github.com/brbmendes/topaz-test/LICENSE.txt
+[license-url]: https://github.com/brbmendes/topaz-test/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/brbmendes/
