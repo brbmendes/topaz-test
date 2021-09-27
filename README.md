@@ -80,9 +80,11 @@ output.txt
 > 0<br>
 > 15<br>
 
+
 **Detalhamento do exemplo**
 
 ttask = 4 (valor da primeira linha do input.txt)
+
 umax = 2 (valor da segundo linha do input.txt)
 
 | Tick | Input | Output | Explicação                                                                                                                 |
