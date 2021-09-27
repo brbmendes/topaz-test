@@ -132,8 +132,8 @@ O modelo de classes foi criado utilizando o programa [Draw IO](https://app.diagr
 
 Tendo o Python 3 e o pip instalados na máquina, instale o coverage:
 
-```python
-pip install coverage
+```
+C:\temp\topaz-test> pip install coverage
 ```
 
 #### Execução do programa
