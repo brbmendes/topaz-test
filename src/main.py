@@ -39,11 +39,11 @@ def update_output(current_output, list_of_active_servers):
     return current_output
 
 def write_output(final_output, final_cost):
-    with open("../output.txt", 'w') as out_file:
+    with open("./output/output.txt", 'w') as out_file:
         for output_line in final_output:
             out_file.write(f"{output_line}\n")
         out_file.write(str(final_cost))
-    print("\nO arquivo de saída output.txt foi gerado no caminho \"./output.txt\"\n")
+    print("\nO arquivo de saída \"output.txt\" foi gerado no caminho \"topaz-test/output/output.txt\"\n")
 
 if __name__ == '__main__':
     has_input_file = has_input_file(sys.argv)
