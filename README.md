@@ -15,21 +15,21 @@
   <summary>Conteúdo</summary>
   <ol>
     <li>
-      <a href="#proposed-problem">O problema proposto</a>
+      <a href="#o-problema-proposto">O problema proposto</a>
     </li>
     <li>
-      <a href="#getting-started">A solução</a>
+      <a href="#a-solução">A solução</a>
       <ul>
-        <li><a href="#class-modelling">Modelagem de classes para o problema proposto</a></li>
-        <li><a href="#prerequisites">Pré-requisitos</a></li>
-        <li><a href="#preparing-environment">Preparação do ambiente</a></li>
-        <li><a href="#running">Execução do programa</a></li>
-        <li><a href="#tests">Testes unitários</a></li>
-        <li><a href="#code-coverage">Cobertura de código</a></li>
+        <li><a href="#modelagem-de-classes-para-o-problema-proposto">Modelagem de classes para o problema proposto</a></li>
+        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#preparação-do-ambiente">Preparação do ambiente</a></li>
+        <li><a href="#execução-do-programa">Execução do programa</a></li>
+        <li><a href="#testes-unitários">Testes unitários</a></li>
+        <li><a href="#cobertura-de-código">Cobertura de código</a></li>
       </ul>
     </li>
-    <li><a href="#license">Licensa</a></li>
-    <li><a href="#acknowledgements">Reconhecimentos</a></li>
+    <li><a href="#licensa">Licensa</a></li>
+    <li><a href="#reconhecimentos">Reconhecimentos</a></li>
   </ol>
 </details>
 
