@@ -13,9 +13,10 @@ class Server:
         return self.__can_add_job
 
     def add_job(self, job):
-        self.__running_jobs.append(job)
-        if len(self.__running_jobs) >= self.__umax:
-            self.__can_add_job = False
+        if self.__can_add_job:
+            self.__running_jobs.append(job)
+            if len(self.__running_jobs) >= self.__umax:
+                self.__can_add_job = False
 
     def get_running_jobs(self):
         return self.__running_jobs
@@ -29,7 +30,7 @@ class Server:
     def update_tasks_remove_finished(self):
         jobs_to_be_removed = []
         for job in self.__running_jobs:
-            job.get_task().decrement_tick()
+            job.get_task().decrement_ticks()
             if job.get_task().get_ticks() <= 0:
                 jobs_to_be_removed.append(job)
 

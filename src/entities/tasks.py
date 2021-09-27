@@ -12,5 +12,5 @@ class Task:
     def get_ticks(self):
         return self.__ticks
 
-    def decrement_tick(self):
+    def decrement_ticks(self):
         self.__ticks -= 1
