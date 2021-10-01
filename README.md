@@ -128,7 +128,7 @@ O modelo de classes foi criado utilizando o programa [Draw IO](https://app.diagr
 
 #### Preparação do ambiente
 
-*A instlação do Python 3 e do PIP não são cobertas nessa explicação. Por favor siga a documentação supra-citada.*
+*A instalação do Python 3 e do PIP não são cobertas nessa explicação. Por favor siga a documentação supra-citada.*
 
 Tendo o Python 3 e o pip instalados na máquina, instale o coverage:
 
